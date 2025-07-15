@@ -16,6 +16,7 @@ import { IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff, PersonAdd } from "@mui/icons-material";
 import API from "../services/api";
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const Register = () => {
@@ -28,17 +29,33 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const handleTogglePassword = () => setShowPassword((prev) => !prev);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await API.post("/auth/register", form);
-      localStorage.setItem("token", res.data.token);
-      alert("Registration successful!");
-      window.location.href = "/dashboard"; // redirect
-    } catch (err) {
-      alert(err.response.data.message || "Error registering");
-    }
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await API.post("/auth/register", form);
+    localStorage.setItem("token", res.data.token);
+    
+    // 🔔 Show success toast
+    toast.success("Registration successful! Redirecting...", {
+      position: "top-right",
+      autoClose: 2000,
+      theme: "colored"
+    });
+
+    // ⏳ Wait 2 seconds before redirecting to dashboard
+    setTimeout(() => {
+      window.location.href = "/dashboard";
+    }, 2000);
+    
+  } catch (err) {
+    toast.error(err.response?.data?.message || "Error registering", {
+      position: "top-right",
+      autoClose: 3000,
+      theme: "colored"
+    });
+  }
+};
+
 
   return (
     <Box

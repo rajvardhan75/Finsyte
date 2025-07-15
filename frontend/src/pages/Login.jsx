@@ -15,6 +15,7 @@ import API from "../services/api";
 import { TextField, IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff, Login as LoginIcon } from "@mui/icons-material";
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [form, setForm] = useState({ identifier: "", password: "" });
@@ -26,17 +27,32 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const handleTogglePassword = () => setShowPassword((prev) => !prev);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await API.post("/auth/login", form);
-      localStorage.setItem("token", res.data.token);
-      alert("Login successful!");
-      window.location.href = "/dashboard"; // redirect
-    } catch (err) {
-      alert(err.response.data.message || "Invalid credentials");
-    }
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await API.post("/auth/login", form);
+    localStorage.setItem("token", res.data.token);
+
+    toast.success("Login successful! Redirecting...", {
+      position: "top-right",
+      autoClose: 2000,
+      theme: "colored"
+    });
+
+    // 👇 Delay redirect so toast can be seen
+    setTimeout(() => {
+      window.location.href = "/dashboard";
+    }, 2000);
+
+  } catch (err) {
+    toast.error(err.response?.data?.message || "Invalid credentials", {
+      position: "top-right",
+      autoClose: 3000,
+      theme: "colored"
+    });
+  }
+};
+
 
   return (
     <Box
