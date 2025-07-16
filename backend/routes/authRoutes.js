@@ -1,13 +1,15 @@
-// routes/authRoutes.js
-
 const express = require('express');
 const router = express.Router();
 const { registerUser, loginUser } = require('../controllers/authController');
+const auth = require('../middleware/auth');
 
-// POST /api/auth/register
+// Public routes
 router.post('/register', registerUser);
-
-// POST /api/auth/login
 router.post('/login', loginUser);
+
+// Protected route example
+router.get('/me', auth, (req, res) => {
+  res.json({ message: 'You are authorized', user: req.user });
+});
 
 module.exports = router;

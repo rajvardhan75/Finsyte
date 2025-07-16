@@ -1,15 +1,11 @@
-// controllers/authController.js
-
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// Register new user
 exports.registerUser = async (req, res) => {
   const { name, username, email, password } = req.body;
 
   try {
-    // Check for existing email or username
     let existingUser = await User.findOne({ $or: [{ email }, { username }] });
     if (existingUser)
       return res
@@ -28,6 +24,7 @@ exports.registerUser = async (req, res) => {
         name: user.name,
         username: user.username,
         email: user.email,
+        type:user.type
       },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
@@ -40,6 +37,7 @@ exports.registerUser = async (req, res) => {
         name: user.name,
         username: user.username,
         email: user.email,
+        type:user.type
       },
     });
   } catch (err) {
@@ -49,7 +47,7 @@ exports.registerUser = async (req, res) => {
 };
 
 exports.loginUser = async (req, res) => {
-  const { identifier, password } = req.body; // identifier = username or email
+  const { identifier, password } = req.body; 
 
   try {
     const isEmail = identifier.includes("@");
@@ -69,6 +67,7 @@ exports.loginUser = async (req, res) => {
         name: user.name,
         username: user.username,
         email: user.email,
+        type:user.type
       },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
@@ -81,6 +80,7 @@ exports.loginUser = async (req, res) => {
         name: user.name,
         username: user.username,
         email: user.email,
+        type:user.type
       },
     });
   } catch (err) {
