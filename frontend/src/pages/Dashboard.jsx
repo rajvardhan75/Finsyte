@@ -3,6 +3,9 @@
 import React from 'react';
 import { Button, Container, Typography } from '@mui/material';
 import { jwtDecode } from 'jwt-decode';
+import PlaidLinkButton from '../components/PlaidLinkButton';
+import { Link } from 'react-router-dom';
+import API from '../services/api';
 
 const Dashboard = () => {
   const token = localStorage.getItem('token');
@@ -20,6 +23,7 @@ const Dashboard = () => {
   };
 
   return (
+    
     <Container>
       <Typography variant="h4" gutterBottom>
         Welcome, {user ? user.name || user.id : 'User'} 👋
@@ -27,6 +31,7 @@ const Dashboard = () => {
       <Button variant="contained" color="error" onClick={handleLogout}>
         Logout
       </Button>
+      <PlaidLinkButton />
     </Container>
   );
 };
