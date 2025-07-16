@@ -3,6 +3,7 @@ const http = require('http');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const { Server } = require('socket.io');
+const fileUpload = require('express-fileupload');
 require('dotenv').config();
 
 const app = express();
@@ -20,13 +21,14 @@ const PORT = process.env.PORT || 5000;
 connectDB();
 
 // Middleware
+app.use(fileUpload());
 app.use(cors());
 app.use(express.json());
 
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/plaid', require('./routes/plaidRoutes'));
-
+app.use('/api/cloudinary',require('./routes/uploadRoutes'));
 // Socket.IO connection
 io.on('connection', (socket) => {
   console.log(`Client connected: ${socket.id}`);
