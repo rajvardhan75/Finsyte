@@ -1,0 +1,25 @@
+body {
+  background-color: #27272a;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+html, body {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.blur-text{
+    font-size: 500%;
+    color: #fff;
+    margin-top: 10rem;
+    background-color: transparent;
+}
+
+.shiny-text{
+  font-size: 130%;
+}
