@@ -13,13 +13,21 @@ html, body {
   box-sizing: border-box;
 }
 
-.blur-text{
-    font-size: 500%;
-    color: #fff;
-    margin-top: 10rem;
-    background-color: transparent;
+.blur-text {
+  font-size: 500%;
+  color: #fff;
+  margin-top: 6rem; /* reduced from 10rem */
+  background-color: transparent;
 }
+
 
 .shiny-text{
   font-size: 130%;
+}
+
+.get-started {
+  margin-top: 2rem;
+  text-align: center;
+  z-index: 10;
+  position: relative;
 }

@@ -17,13 +17,14 @@ const LandingNavbar = () => {
       label: 'Services',
     },
     {
-      icon: <FaRegAddressCard size={18} color='white' />,
-      label: 'About Us',
-    },
-    {
       icon: <BiMoney size={18} color='white' />,
       label: 'Pricing',
     },
+    {
+      icon: <FaRegAddressCard size={18} color='white' />,
+      label: 'About Us',
+    },
+    
   ];
 
   return (
