@@ -1,11 +1,9 @@
 import React from "react";
 import DotGrid from "../components/DotGrid";
 import Dock from "../components/LandingNavbar/LandingNavbar";
-import BlurText from "../components/BlurText"; // Adjust path if needed
-import GooeyNav from "../components/GooeyNav";
+import BlurText from "../components/BlurText";
 import ShinyText from "../components/ShinyText";
-
-import ScrollStack, { ScrollStackItem } from "../components/ScrollStack";
+import SpotlightCard from "../components/SpotlightCard";
 import "./Landing.css";
 
 import {
@@ -60,19 +58,28 @@ const Landing = () => {
             padding: "0.75rem 1.25rem",
             borderRadius: "12px",
             position: "absolute",
-            top: "1rem",
+            top: "0rem",
             right: "1rem",
             zIndex: 10,
+            border: "2px solid #222",
           }}
         >
-          <a href="/signup" className="btn btn-primary">
-            Signup
+          <a
+            href="/register"
+            className="btn btn-primary btn-lg"
+            id="signup"
+            style={{ backgroundColor: "#27272a" }}
+          >
+            Register
           </a>
           <a
             href="/login"
+            className="btn btn-primary btn-lg"
+            id="login"
             style={{
-              color: "#0d6efd",
-              textDecoration: "none",
+              color: "#616263ff",
+              backgroundColor: "#27272a",
+              border: "2px solid #616263ff",
               fontWeight: 500,
             }}
           >
@@ -176,66 +183,6 @@ Your all-in-one AI-powered personal finance navigator."
             </button>
           </div>
         </div>
-      </div>
-      <div
-        style={{ backgroundColor: "#1a1a1a", padding: "5rem 2rem", zIndex: 2 }}
-      >
-        <h2
-          style={{
-            color: "#ffffff",
-            textAlign: "center",
-            fontSize: "2.5rem",
-            marginBottom: "3rem",
-          }}
-        >
-          Our Services
-        </h2>
-        <ScrollStack
-          itemDistance={120}
-          itemScale={0.04}
-          itemStackDistance={40}
-          stackPosition="25%"
-          scaleEndPosition="10%"
-          baseScale={0.85}
-          rotationAmount={0}
-          blurAmount={1.5}
-        >
-          <ScrollStackItem>
-            <h3>💸 Budget Automation</h3>
-            <p>
-              Automatically track and allocate your expenses to maintain a smart
-              budget without lifting a finger.
-            </p>
-          </ScrollStackItem>
-          <ScrollStackItem>
-            <h3>📊 Expense Categorization</h3>
-            <p>
-              AI categorizes your transactions in real time so you can stay
-              aware of where your money goes.
-            </p>
-          </ScrollStackItem>
-          <ScrollStackItem>
-            <h3>📈 Cash Flow Forecasting</h3>
-            <p>
-              Project future spending and income trends using predictive models
-              tailored for you.
-            </p>
-          </ScrollStackItem>
-          <ScrollStackItem>
-            <h3>🤖 AI Financial Advisor</h3>
-            <p>
-              Get insights, alerts, and recommendations from our smart system to
-              optimize financial habits.
-            </p>
-          </ScrollStackItem>
-          <ScrollStackItem>
-            <h3>🔗 Bank Sync via Setu</h3>
-            <p>
-              Securely link all your bank accounts via Setu's Account Aggregator
-              and view everything in one dashboard.
-            </p>
-          </ScrollStackItem>
-        </ScrollStack>
       </div>
     </>
   );

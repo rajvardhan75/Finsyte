@@ -31,3 +31,20 @@ html, body {
   z-index: 10;
   position: relative;
 }
+
+#signup{
+  color: #0d6efd;
+}
+#signup:hover {
+  color: #fff;
+  font-weight: 400;
+  
+}
+#login{
+  color: #616263ff;
+}
+#login:hover {
+  color: #fff;
+  font-weight: 400;
+  
+}
