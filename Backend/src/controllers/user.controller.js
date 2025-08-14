@@ -9,11 +9,7 @@ import mongoose from 'mongoose';
 
 const generateAccessAndRefreshToken = async (userId) => {
   try {
-    console.log("✅ tokenGen:userId =", userId);
-    console.log("🔑 has ACCESS_TOKEN_SECRET?", !!process.env.ACCESS_TOKEN_SECRET, "len:", process.env.ACCESS_TOKEN_SECRET?.length || 0);
-    console.log("🔑 has REFRESH_TOKEN_SECRET?", !!process.env.REFRESH_TOKEN_SECRET, "len:", process.env.REFRESH_TOKEN_SECRET?.length || 0);
-    console.log("⏳ ACCESS_TOKEN_EXPIRY =", process.env.ACCESS_TOKEN_EXPIRY);
-    console.log("⏳ REFRESH_TOKEN_EXPIRY =", process.env.REFRESH_TOKEN_EXPIRY);
+    
 
     if (!userId || !mongoose.Types.ObjectId.isValid(userId)) {
       throw new Error("Invalid or missing userId for token generation");
@@ -61,9 +57,6 @@ const registerUser= asyncHandler(async (req, res) => {
     if(existedUser){
         throw new ApiError(409,"Username or email already exists" );
     }
-
-  
-
     
    const user=await User.create({
         fullname,
@@ -72,6 +65,7 @@ const registerUser= asyncHandler(async (req, res) => {
         password,
        
     });
+    console.log(user);
    const createdUser=await User.findById(user._id).select("-password -refreshToken");
    if(!createdUser){
         throw new ApiError(500,"Something went wrong while registering the user" );

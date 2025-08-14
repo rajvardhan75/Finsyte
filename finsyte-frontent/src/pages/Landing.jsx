@@ -1487,16 +1487,18 @@ function App() {
             </motion.h2>
           </ParallaxText>
 
-          <motion.p
-            className="text-2xl text-gray-400 max-w-4xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            Harness the power of AI to transform your financial journey with
-            intelligent insights and automated solutions.
-          </motion.p>
+          <div className="flex items-center justify-center text-center">
+            <motion.p
+              className="text-2xl text-gray-400 max-w-4xl leading-relaxed"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              Harness the power of AI to transform your financial journey with
+              intelligent insights and automated solutions.
+            </motion.p>
+          </div>
         </AnimatedSection>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6.5xl mx-auto">
@@ -1789,17 +1791,21 @@ function App() {
               </motion.span>
             </motion.h2>
           </ParallaxText>
-          <motion.p
-            className="text-2xl text-gray-400 mb-16 leading-relaxed max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            Join thousands of users who have already taken control of their
-            finances with Finsyte's AI-powered platform. Start your journey
-            today!
-          </motion.p>
+          
+          <div className="flex items-center justify-center">
+            <motion.p
+              className="text-2xl text-gray-400 mb-16 leading-relaxed max-w-4xl text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              Join thousands of users who have already taken control of their
+              finances with Finsyte's AI-powered platform. Start your journey
+              today!
+            </motion.p>
+          </div>
+
           <StaggeredContainer
             className="flex flex-col sm:flex-row gap-8 justify-center"
             variant="wave"
@@ -1826,14 +1832,14 @@ function App() {
                   />
                   <span className="relative z-10 flex items-center">
                     <motion.div
-                      animate={{ rotate: [0, 360] }}
+                     // animate={{ rotate: [0, 360] }}
                       transition={{
                         duration: 2,
                         repeat: Number.POSITIVE_INFINITY,
                         ease: "linear",
                       }}
                     >
-                      <Rocket className="mr-4 w-8 h-8" />
+                     <Rocket className="mr-4 w-8 h-8 transform rotate-0" />
                     </motion.div>
                     Start Your Free Trial
                     <motion.div
@@ -1862,7 +1868,7 @@ function App() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-3 border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white px-16 py-8 text-2xl font-bold transition-all duration-300 bg-transparent backdrop-blur-sm relative overflow-hidden group"
+                  className="border-3 border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white px-120 py-20 text-2xl font-bold transition-all duration-300 bg-transparent backdrop-blur-sm relative overflow-hidden group"
                 >
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20"
@@ -1872,7 +1878,7 @@ function App() {
                   />
                   <span className="relative z-10 flex items-center">
                     <motion.div
-                      animate={{ rotate: [0, 360] }}
+                  //   animate={{ rotate: [0, 360] }}
                       transition={{
                         duration: 3,
                         repeat: Number.POSITIVE_INFINITY,
